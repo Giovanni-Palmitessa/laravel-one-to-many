@@ -12,6 +12,7 @@ class PortfolioController extends Controller
     private $validations = [
         'name' => 'required|string|max:100|min:5',
         'client_name' => 'required|string|max:100|min:5',
+        'type_id' => 'required|integer|exists:types,id',
         'url_image' => 'required|url|max:400',
         'pickup_date' => 'required|date',
         'deploy_date' => 'required|date',
@@ -24,6 +25,7 @@ class PortfolioController extends Controller
         'max' => 'Il campo :attribute deve avere massimo :max caratteri',
         'url' => 'Il campo :attribute deve essere un URL valido',
         'date' => 'Il campo :attribute deve essere una data in formato valido',
+        'exists' => 'Il campo :attribute non è valido',
     ];
     /**
      * Display a listing of the resource.
