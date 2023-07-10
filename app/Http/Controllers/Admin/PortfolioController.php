@@ -100,7 +100,8 @@ class PortfolioController extends Controller
      */
     public function edit(Portfolio $portfolio)
     {
-        return view('admin.portfolios.edit', compact('portfolio'));
+        $types = Type::all();
+        return view('admin.portfolios.edit', compact('portfolio', 'types'));
     }
 
     /**
@@ -121,6 +122,7 @@ class PortfolioController extends Controller
         // salvare i dati nel db se validi
         $portfolio->name = $data['name'];
         $portfolio->client_name = $data['client_name'];
+        $portfolio->type_id = $data['type_id'];
         $portfolio->url_image = $data['url_image'];
         $portfolio->pickup_date = $data['pickup_date'];
         $portfolio->deploy_date = $data['deploy_date'];
