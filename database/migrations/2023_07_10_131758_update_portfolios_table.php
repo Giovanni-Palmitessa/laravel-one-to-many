@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::table('portfolios', function (Blueprint $table) {
-            //
+            // creare la colonna della chiave esterna
+            $table->unsignedBigInteger('type_id')->after('id');
+
+            // definire la colonna come chiave esterna
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 
@@ -26,7 +30,11 @@ return new class extends Migration
     public function down()
     {
         Schema::table('portfolios', function (Blueprint $table) {
-            //
+            // eliminare la chiave esterna
+            $table->dropForeign('portfolios_type_id_foreign');
+
+            // eliminare la colonna
+            $table->dropColumn('type_id');
         });
     }
 };
