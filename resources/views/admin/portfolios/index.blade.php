@@ -28,7 +28,7 @@
                     <th scope="row">{{ $portfolio->id }}</th>
                     <td>{{ $portfolio->name }}</td>
                     <td>{{ $portfolio->client_name }}</td>
-                    <td>{{ $portfolio->type->name}}</td>
+                    <td><a href="{{ route('admin.types.show', ['type' => $portfolio->type]) }}">{{ $portfolio->type->name }}</a></td>
                     <td>{{ $portfolio->pickup_date}}</td>
                     <td>{{ $portfolio->deploy_date }}</td>
                     <td>
