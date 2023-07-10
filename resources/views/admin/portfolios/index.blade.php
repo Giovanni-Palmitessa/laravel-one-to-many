@@ -17,6 +17,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nome Progetto</th>
                 <th scope="col">Nome del Cliente</th>
+                <th scope="col">Tipo</th>
                 <th scope="col">Data Inizio Progetto</th>
                 <th scope="col">Data Fine Progetto</th>
             </tr>
@@ -27,6 +28,7 @@
                     <th scope="row">{{ $portfolio->id }}</th>
                     <td>{{ $portfolio->name }}</td>
                     <td>{{ $portfolio->client_name }}</td>
+                    <td>{{ $portfolio->type->name}}</td>
                     <td>{{ $portfolio->pickup_date}}</td>
                     <td>{{ $portfolio->deploy_date }}</td>
                     <td>
