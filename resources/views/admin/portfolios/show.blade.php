@@ -5,6 +5,7 @@
     <div class="card m-4" style="width: 25rem;">
         <img src="{{$portfolio->url_image}}" class="card-img-top" alt="{{$portfolio->name}}">
         <div class="card-body">
+          <h2>Tipo: {{$portfolio->type->name}} </h2>
           <h5 class="card-title">{{$portfolio->name}}</h5>
           <p class="card-text">{{$portfolio->description}}</p>
         </div>
