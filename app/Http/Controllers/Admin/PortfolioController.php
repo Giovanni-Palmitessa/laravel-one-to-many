@@ -66,6 +66,7 @@ class PortfolioController extends Controller
         $newPortfolio = new Portfolio();
         $newPortfolio->name = $data['name'];
         $newPortfolio->client_name = $data['client_name'];
+        $newPortfolio->type_id = $data['type_id'];
         $newPortfolio->url_image = $data['url_image'];
         $newPortfolio->pickup_date = $data['pickup_date'];
         $newPortfolio->deploy_date = $data['deploy_date'];
