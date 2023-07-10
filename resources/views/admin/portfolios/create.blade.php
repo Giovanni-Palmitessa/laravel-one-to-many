@@ -39,6 +39,22 @@
         </div>
 
         <div class="mb-3">
+            <label for="category" class="form-label">Type</label>
+
+            <select class="form-select @error('type_id') is-invalid @enderror" aria-label="Default select example" id="type" name="type_id">
+                <option selected value="0">Seleziona una categoria</option>
+                @foreach ($types as $type)
+                    <option value="{{$type->id}}">{{$type->name}}</option>
+                @endforeach
+            </select>
+            @error('type_id')
+                <div class="invalid-feedback">
+                    {{ $message }} 
+                </div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="url_image" class="form-label">Immagine</label>
             <input
                 type="text"
