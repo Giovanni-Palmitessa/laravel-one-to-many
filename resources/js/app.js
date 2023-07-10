@@ -16,3 +16,12 @@ if (confirmDelete) {
         });
     })
 }
+
+const confirmDeleteType = document.querySelector('#confirm-delete-type');
+if (confirmDeleteType) {
+    document.querySelectorAll('.js-delete').forEach(button => {
+        button.addEventListener('click', function () {
+            confirmDeleteType.action = confirmDeleteType.dataset.template.replace('*****', this.dataset.id);
+        });
+    })
+}

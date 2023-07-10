@@ -55,7 +55,7 @@
                         data-template="{{ route('admin.types.destroy', ['type' => '*****']) }}"
                         method="post"
                         class="d-inline-block"
-                        id="confirm-delete"
+                        id="confirm-delete-type"
                     >
                         @csrf
                         @method('delete')
