@@ -2,12 +2,12 @@
 
 @section('contents')
 
-    <h1>Portfolios</h1>
+    <h1>Types</h1>
 
     @if (session('delete_success'))
-        @php $portfolio = session('delete_success') @endphp
+        @php $type = session('delete_success') @endphp
         <div class="alert alert-danger">
-            Il portfolio "{{ $portfolio->name }}" è stato eliminato per sempre :(
+            La tipologia "{{ $type->name }}" è stata eliminata per sempre :(
         </div>
     @endif
 
@@ -15,27 +15,20 @@
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Nome Progetto</th>
-                <th scope="col">Nome del Cliente</th>
                 <th scope="col">Tipo</th>
-                <th scope="col">Data Inizio Progetto</th>
-                <th scope="col">Data Fine Progetto</th>
+                <th scope="col">Azioni</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($portfolios as $portfolio)
+            @foreach ($types as $type)
                 <tr>
-                    <th scope="row">{{ $portfolio->id }}</th>
-                    <td>{{ $portfolio->name }}</td>
-                    <td>{{ $portfolio->client_name }}</td>
-                    <td>{{ $portfolio->type->name}}</td>
-                    <td>{{ $portfolio->pickup_date}}</td>
-                    <td>{{ $portfolio->deploy_date }}</td>
+                    <th scope="row">{{ $type->id }}</th>
+                    <td>{{ $type->name }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('admin.portfolios.show', ['portfolio' => $portfolio]) }}">View</a>
-                        <a class="btn btn-warning" href="{{ route('admin.portfolios.edit', ['portfolio' => $portfolio]) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ route('admin.types.show', ['type' => $type]) }}">View</a>
+                        <a class="btn btn-warning" href="{{ route('admin.types.edit', ['type' => $type]) }}">Edit</a>
 
-                        <button type="button" class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $portfolio->id }}">
+                        <button type="button" class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $type->id }}">
                             Delete
                         </button>
 
@@ -59,7 +52,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                     <form
                         action=""
-                        data-template="{{ route('admin.portfolios.destroy', ['portfolio' => '*****']) }}"
+                        data-template="{{ route('admin.types.destroy', ['type' => '*****']) }}"
                         method="post"
                         class="d-inline-block"
                         id="confirm-delete"
@@ -72,7 +65,4 @@
             </div>
         </div>
     </div>
-
-    {{ $portfolios->links() }}
-
 @endsection
