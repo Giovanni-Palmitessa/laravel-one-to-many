@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class TypeController extends Controller
 {
+    private $validations = [
+        'name' => 'required|string|min:5|max:20',
+        'description' => 'required|string|min:5|max:200',
+    ];
+
+    private $validations_messages = [
+        'required' => 'Il campo :attribute è richiesto',
+        'min' => 'Il campo :attribute deve avere almeno :min caratteri',
+        'max' => 'Il campo :attribute deve avere massimo :max caratteri',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +36,8 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+        return view('admin.types.create', compact('types'));
     }
 
     /**
@@ -37,7 +48,21 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validare i dati del form
+        $request->validate($this->validations, $this->validations_messages);
+
+        $data = $request->all();
+
+        // salvare i dati nel db se validi
+        $newType = new Type();
+        $newType->name = $data['name'];
+        $newType->description = $data['description'];
+
+        $newType->save();
+
+        // reindirizzare su una rotta di tipo get
+
+        return to_route('admin.types.show', ['type' => $newType]);
     }
 
     /**
@@ -59,7 +84,8 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        $types = Type::all();
+        return view('admin.types.edit', compact('type', 'types'));
     }
 
     /**
@@ -71,7 +97,20 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        // validare i dati del form
+        $request->validate($this->validations, $this->validations_messages);
+
+        $data = $request->all();
+
+        // salvare i dati nel db se validi
+        $type->name = $data['name'];
+        $type->description = $data['description'];
+
+        $type->update();
+
+        // reindirizzare su una rotta di tipo get
+
+        return to_route('admin.types.show', ['type' => $type]);
     }
 
     /**
