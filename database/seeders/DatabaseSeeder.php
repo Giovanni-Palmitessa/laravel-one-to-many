@@ -22,8 +22,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            PortfoliosTableSeeder::class,
             UsersTableSeeder::class,
+            TypesTableSeeder::class,
+            PortfoliosTableSeeder::class,
         ]);
     }
 }

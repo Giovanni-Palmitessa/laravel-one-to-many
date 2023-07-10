@@ -19,6 +19,7 @@ class PortfoliosTableSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
 
             Portfolio::create([
+                'type_id' => rand(1, 3),
                 'name' => $faker->words(rand(2, 4), true),
                 'client_name' => $faker->words(2, true),
                 'url_image' => 'https://picsum.photos/id/' . rand(1, 270) . '/500/400',
